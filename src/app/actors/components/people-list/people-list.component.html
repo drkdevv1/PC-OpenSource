@@ -1,0 +1,121 @@
+<mat-card>
+  <mat-card-content>
+
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="height">
+        <th mat-header-cell *matHeaderCellDef> Height </th>
+        <td mat-cell *matCellDef="let element"> {{element.height}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="mass">
+        <th mat-header-cell *matHeaderCellDef> Mass </th>
+        <td mat-cell *matCellDef="let element"> {{element.mass}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="hair_color">
+        <th mat-header-cell *matHeaderCellDef> Hair color </th>
+        <td mat-cell *matCellDef="let element"> {{element.hair_color}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="skin_color">
+        <th mat-header-cell *matHeaderCellDef> Skin Color</th>
+        <td mat-cell *matCellDef="let element"> {{element.skin_color}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="eye_color">
+        <th mat-header-cell *matHeaderCellDef> Eye Color </th>
+        <td mat-cell *matCellDef="let element"> {{element.eye_color}} </td>
+      </ng-container>
+      <ng-container matColumnDef="birth_year">
+        <th mat-header-cell *matHeaderCellDef> Birth Year </th>
+        <td mat-cell *matCellDef="let element"> {{element.birth_year}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef> Gender </th>
+        <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="homeworld">
+        <th mat-header-cell *matHeaderCellDef> Homeworld </th>
+        <td mat-cell *matCellDef="let element"> {{element.homeworld}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="films">
+        <th mat-header-cell *matHeaderCellDef> Films </th>
+        <td mat-cell *matCellDef="let element">
+          <ul>
+            <li *ngFor="let film of element.films">
+              <a href="{{film}}">{{film}}</a>
+            </li>
+          </ul>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="species">
+        <th mat-header-cell *matHeaderCellDef> Species </th>
+        <td mat-cell *matCellDef="let element">
+          <ul>
+            <li *ngFor="let specie of element.species">
+              <a href="{{specie}}">{{specie}}</a>
+            </li>
+          </ul>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="vehicles">
+        <th mat-header-cell *matHeaderCellDef> Vehicles </th>
+        <td mat-cell *matCellDef="let element">
+          <ul>
+            <li *ngFor="let vehicle of element.vehicles">
+              <a href="{{vehicle}}">{{vehicle}}</a>
+            </li>
+          </ul>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="starships">
+        <th mat-header-cell *matHeaderCellDef> StarShips </th>
+        <td mat-cell *matCellDef="let element">
+          <ul>
+            <li *ngFor="let starship of element.starships">
+              <a href="{{starship}}">{{starship}}</a>
+            </li>
+          </ul>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="created">
+        <th mat-header-cell *matHeaderCellDef> Created </th>
+        <td mat-cell *matCellDef="let element"> {{element.created}} </td>
+      </ng-container>
+      <ng-container matColumnDef="edited">
+        <th mat-header-cell *matHeaderCellDef> Edited </th>
+        <td mat-cell *matCellDef="let element"> {{element.edited}} </td>
+      </ng-container>
+      <ng-container matColumnDef="url">
+        <th mat-header-cell *matHeaderCellDef> Url </th>
+        <td mat-cell *matCellDef="let element"> {{element.url}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+
+  </mat-card-content>
+</mat-card>
